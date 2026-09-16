@@ -1,69 +1,82 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { Button, Card, Text, Title } from '@mantine/core';
+import styles from './page.module.css';
+
+interface Movie {
+  id: number;
+  title: string;
+  genre: string;
+  duration: string;
+}
+
+const movies: Movie[] = [
+  {
+    id: 1,
+    title: 'Avengers',
+    genre: 'Action',
+    duration: '2h 20m',
+  },
+  {
+    id: 2,
+    title: 'Interstellar',
+    genre: 'Science Fiction',
+    duration: '2h 49m',
+  },
+  {
+    id: 3,
+    title: 'The Batman',
+    genre: 'Crime',
+    duration: '2h 56m',
+  },
+  {
+    id: 4,
+    title: 'Toy Story',
+    genre: 'Animation',
+    duration: '1h 21m',
+  },
+];
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <Title>Movie Booking</Title>
+
+        <div className={styles.buttons}>
+          <Button>My Bookings</Button>
+          <Button>Login</Button>
+          <Button>Sign Up</Button>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
+
+      <Title order={2} className={styles.moviesTitle}>
+        Available Movies
+      </Title>
+
+      <div className={styles.movies}>
+        {movies.map(function(movie) {
+          return (
+            <Card
+              key={movie.id}
+              shadow="sm"
+              padding="lg"
+              withBorder
+              className={styles.movieCard}
+            >
+              <Title order={3}>{movie.title}</Title>
+
+              <Text>{movie.genre}</Text>
+
+              <Text>{movie.duration}</Text>
+
+              <Button mt="15">
+                Book Movie
+              </Button>
+            </Card>
+          );
+        })}
+      </div>
     </div>
   );
 }
