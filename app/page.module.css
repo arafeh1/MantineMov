@@ -1,26 +1,70 @@
 .container {
+  min-height: 100vh;
   padding: 30px;
+  background-color: #111827;
 }
 
-/* Flexbox */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 25px;
+  background-color: #1f2937;
+  border-radius: 12px;
 }
 
-/* Flexbox */
+
+.header h1 {
+  color: white;
+}
+
+
 .buttons {
   display: flex;
   gap: 10px;
 }
 
-/* CSS child combinator */
+
 .header > .buttons {
   margin-left: 20px;
 }
 
-/* Flexbox */
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  margin-top: 30px;
+  padding: 45px 20px;
+
+  background-color: #312e81;
+  border-radius: 12px;
+}
+
+
+.welcome h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  color: #ddd6fe;
+}
+
+
+.moviesTitle, .welcome h2 {
+  font-weight: 600;
+}
+
+.moviesTitle {
+  color: white;
+  margin-top: 35px;
+}
+
 .movies {
   display: flex;
   flex-wrap: wrap;
@@ -28,27 +72,40 @@
   margin-top: 20px;
 }
 
-/* CSS descendant combinator */
 .movies .movieCard {
   width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  transition: 0.2s;
 }
 
-/* CSS child combinator */
+
+.movieCard:hover {
+  transform: translateY(-5px);
+}
+
+
 .movieCard > h3 {
+  color: #111827;
   margin-bottom: 10px;
 }
 
-/* CSS adjacent sibling combinator */
+
 .movieCard h3 + p {
   margin-top: 5px;
 }
 
-/* CSS general sibling combinator */
+
 .movieCard h3 ~ p {
-  color: gray;
+  color: #6b7280;
 }
 
-/* Normal CSS */
-.moviesTitle {
-  margin-top: 30px;
+.movieCard {
+  display: flex;
+  flex-direction: column;
 }
+
+.movieCard > button {
+  margin-top: auto;
+}
+
